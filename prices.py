@@ -1,19 +1,20 @@
 import pandas as pd
 
 
-def weekly_close(exchange, tidm, start_date, end_date):
+def weekly(exchange, tidm, start_date, end_date):
     """Generate weekly closing prices from SharePad csv file of daily prices."""
     df = pd.read_csv(
         f"{exchange}_{tidm}_prices.csv",
         header=0,
-        names=["date", "close"],
+        names=["date", "open", "high", "low", "close"],
         index_col=0,
-        usecols=[0, 4],
+        usecols=[0, 1, 2, 3, 4],
         parse_dates=True,
         dayfirst=True,
     )
     df = df.sort_index()
-    df = df.resample("W-FRI").agg(dict(close="last"))
+    functions = dict(open="first", high="max", low="min", close="last")
+    df = df.resample("W-FRI").agg(functions)
     df = df / 100
     df = df.loc[start_date:end_date]
     return df
