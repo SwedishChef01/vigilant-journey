@@ -1,11 +1,13 @@
+import pandas as pd
 import plotly.graph_objects as go
+
 
 def cum_profit(tidm, strategy, timeframe, position_size, trade_list):
     """Plot of Cumulative Profit vs Date."""
 
     # Create plot trace.
     trace = go.Scatter(
-        x=trade_list.index,
+        x=trade_list.exit_date,
         y=trade_list.cum_profit,
         line=dict(color='rgba(92, 230, 174, 1.0)', width=1.0),
         yhoverformat=".0f",
