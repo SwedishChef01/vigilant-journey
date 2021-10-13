@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 
-def cum_profit(tidm, strategy, timeframe, position_size, trade_list):
+def cum_profit(exchange, tidm, strategy, timeframe, position_size, trade_list):
     """Plot of Cumulative Profit vs Date."""
 
     # Create plot trace.
@@ -24,12 +24,10 @@ def cum_profit(tidm, strategy, timeframe, position_size, trade_list):
         plot_bgcolor='rgba(28, 28, 28, 1.0)',
         font=dict(color='rgba(226, 226, 226, 1.0)'),
         title=dict(
-            text=f'TIDM: {tidm}'
-            + f'<br>{strategy} {timeframe}'
-            + f'<br>Position Size = '
-            + '{:,}'.format(position_size),
+            text=f'{exchange} {tidm}'
+            + f'<br>{strategy} {timeframe}',
             font_color='rgba(226, 226, 226, 1.0)',
-            font_size=14,
+            font_size=16,
         ),
         xaxis=dict(rangeslider=dict(visible=False)),
         hovermode='x unified',
@@ -41,6 +39,7 @@ def cum_profit(tidm, strategy, timeframe, position_size, trade_list):
         linecolor='rgba(226, 226, 226, 1.0)',
         gridcolor='rgba(119, 119, 119, 0.5)',
         mirror=True,
+        title=f'Position Size = ' + '{:,}'.format(position_size),
     )
 
     fig.update_yaxes(
