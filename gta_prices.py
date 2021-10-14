@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def weekly(exchange, tidm, start_date, end_date):
+def weekly(exchange, tidm, start_date):
     """Weekly closing prices from SharePad csv file of daily prices."""
     df = pd.read_csv(
         f"{exchange}_{tidm}_prices.csv",
@@ -16,5 +16,5 @@ def weekly(exchange, tidm, start_date, end_date):
     functions = dict(open="first", high="max", low="min", close="last")
     df = df.resample("W-FRI").agg(functions)
     df = df / 100
-    df = df.loc[start_date:end_date]
+    df = df.loc[start_date:]
     return df
