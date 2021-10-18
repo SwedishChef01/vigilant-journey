@@ -1,0 +1,13 @@
+OPTIONS TRADING NOTES
+
+# There are two types of options: calls and puts.
+# The price of a call option rises when its underlying stock goes up.
+# The price of a put option rises when its underlying stock goes down.
+# Owning a call option gives you the right to buy a certain stock at a specific price
+  (strike price) by a certain date.
+# Owning a put option gives you the right to sell a certain stock at a specific price
+  (strike price) by a certain date.
+# Option price above strike price = ITM = In the Money
+# Option price below strike price = OTM = Out of the Money
+# The number of existing contracts for an option is known as open interest.
+#
