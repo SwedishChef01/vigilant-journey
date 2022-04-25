@@ -2,6 +2,15 @@ import numpy as np
 import pandas as pd
 
 
+def donchian(prices, period):
+    '''Calculate upper, lower, & middle Donchian channels.'''
+    df = pd.DataFrame(prices)
+    df["upr"] = df.high.rolling(period).max().shift(periods=1)
+    df["lwr"] = df.low.rolling(period).min().shift(periods=1)
+    df["mid"] = 0.5 * (df.upr + df.lwr)
+    return df
+
+
 def rsi(close, period):
     """Relative Strength Index (RSI)."""
     df = pd.DataFrame(close)
