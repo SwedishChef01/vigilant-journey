@@ -2,12 +2,12 @@ import numpy as np
 import pandas as pd
 
 
-def donchian(prices, system, period):
-    '''Calculate upper, lower, & middle Donchian channels.'''
+def donchian(prices, period):
+    '''Calculate upper, lower, & middle Donchian lines.'''
     df = pd.DataFrame()
-    df[f'upr{system}'] = prices.high.rolling(period).max().shift(periods=1)
-    df[f'lwr{system}'] = prices.low.rolling(period).min().shift(periods=1)
-    df[f'mid{system}'] = 0.5 * (df[f'upr{system}'] + df[f'lwr{system}'])
+    df['upr'] = prices.high.rolling(period).max().shift(periods=1)
+    df['lwr'] = prices.low.rolling(period).min().shift(periods=1)
+    df['mid'] = 0.5 * (df.upr + df.lwr)
     return df
 
 
