@@ -34,3 +34,12 @@ def rsi(close, period):
     df['rs'] = df.avg_gain / df.avg_loss
     df['rsi'] = 100 - 100 / (1 + df.rs)
     return df.rsi
+
+def donchian_test(prices, period):
+    '''Calculate upper, lower, & middle Donchian lines.'''
+    for i in period:
+        df = pd.DataFrame()
+        df['upr'] = prices.high.rolling(i).max().shift(periods=1)
+        df['lwr'] = prices.low.rolling(i).min().shift(periods=1)
+        df['mid'] = 0.5 * (df.upr + df.lwr)
+    return df
