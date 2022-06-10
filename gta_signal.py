@@ -16,3 +16,12 @@ def state_signal(entry_signal, exit_signal, period):
         else:
             df.loc[df.index[i], 'state'] = df.loc[df.index[i - 1], 'state']
     return df.state
+
+
+def state(price, donchian):
+    '''Calculate trade state signals.'''
+    df = pd.DataFrame(index=price.index)
+    df['buy'] = np.where(price.close > donchian.upr, 1, 0)
+    df['sell'] = np.where(price.close < donchian.mid, 1, 0)
+    df['state'] = 0
+    return df
