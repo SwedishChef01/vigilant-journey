@@ -1,0 +1,8 @@
+# environment.yml
+name: gta-project
+channels:  
+    - conda-forge
+dependencies:  
+    - python=3.10  
+    - jupyterlab=3.4.3 
+    - pandas=1.4.2

@@ -1,0 +1,5 @@
+Styling pandas DataFrames
+-------------------------
+https://www.markhneedham.com/blog/2021/04/11/pandas-format-dataframe-numbers-commas-decimals/
+https://pbpython.com/styling-pandas.html
+https://stackoverflow.com/questions/46588792/formatting-datetime-index-with-pandas-dataframe-styler
