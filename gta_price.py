@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def weekly(exchange, tidm):
-    '''Weekly closing prices from SharePad csv file of daily prices.'''
+    '''Generate weekly prices from SharePad csv file of daily prices.'''
     df = pd.read_csv(
         f'{exchange}_{tidm}_prices.csv',
         header=0,
@@ -16,4 +16,5 @@ def weekly(exchange, tidm):
     functions = dict(open='first', high='max', low='min', close='last')
     df = df.resample('W-FRI').agg(functions)
     df = df / 100
+    df.insert(0, 'tidm', tidm)
     return df

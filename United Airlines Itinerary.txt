@@ -1,0 +1,60 @@
+Original LHR to SYD
+-------------------
+UA 939
+Sat 23 Jul 2022   --->   Sat 23 Jul 2022
+14:10 LHR                17:15 SFO
+Duration 11h 5m
+
+Layover 5h 40m
+
+UA 863
+Sat 23 Jul 2022   --->   Mon 25 Jul 2022
+22:55 SFO                07:00 SYD
+Duration 15h 5m
+
+
+Original SYD to LHR
+-------------------
+UA 870
+Thu 11 Aug 2022   --->   Thu 11 Aug 2022
+10:20 SYD                07:00 SFO
+Duration 13h 40m
+
+Layover 5h 30m
+
+UA 901
+Thu 11 Aug 2022   --->   Fri 12 Aug 2022
+12:30 SFO                06:55 LHR
+Duration 10h 25m
+
+----------------------------------------
+----------------------------------------
+
+New LHR to SYD
+--------------
+UA 939
+Sat 23 Jul 2022   --->   Sat 23 Jul 2022
+14:10 LHR                17:05 SFO
+Duration 10h 55m
+
+Layover 5h 50m
+
+UA 863
+Sat 23 Jul 2022   --->   Mon 25 Jul 2022
+22:55 SFO                07:00 SYD
+Duration 15h 5m
+
+
+New SYD to LHR
+-------------------
+UA 870
+Thu 11 Aug 2022   --->   Thu 11 Aug 2022
+10:20 SYD                07:00 SFO
+Duration 13h 40m
+
+Layover 5h 30m
+
+UA 901
+Thu 11 Aug 2022   --->   Fri 12 Aug 2022
+12:30 SFO                06:55 LHR
+Duration 10h 25m
