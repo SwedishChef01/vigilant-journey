@@ -8,3 +8,16 @@ Styling pandas DataFrames
 https://www.markhneedham.com/blog/2021/04/11/pandas-format-dataframe-numbers-commas-decimals/
 https://pbpython.com/styling-pandas.html
 https://stackoverflow.com/questions/46588792/formatting-datetime-index-with-pandas-dataframe-styler
+
+
+HTTP/Requests
+--------
+https://requests.readthedocs.io/en/latest/#
+https://realpython.com/python-api/#calling-your-first-api-using-python
+https://developer.mozilla.org/en-US/docs/Web/HTTP
+
+
+IG API
+------
+https://labs.ig.com/rest-trading-api-reference
+https://web-labs.ig.com/rest-api-guide-example-requests
