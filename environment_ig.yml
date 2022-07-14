@@ -1,8 +1,0 @@
-# environment.yml
-name: ig-project
-channels:  
-    - conda-forge
-dependencies:  
-    - python=3.10.5  
-    - jupyterlab=3.4.3 
-    - pandas=1.4.3
