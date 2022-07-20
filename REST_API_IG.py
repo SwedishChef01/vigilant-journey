@@ -1,85 +1,51 @@
+'''IG Markets REST trading API.'''
+
 import numpy as np
 import pandas as pd
 import requests
 
-def request(api_key, client_session_token, x_security_token):
-    url = 'https://demo-api.ig.com/gateway/deal/session',
+
+def request(endpoint):
+    '''Response for GET HTTP request.'''
+    url = f'https://demo-api.ig.com/gateway/deal/{endpoint}'
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json; charset=UTF-8',
-        'X-IG-API-KEY': api_key,
-        'CST': client_session_token,
-        'X-SECURITY-TOKEN': x_security_token,
+        'X-IG-API-KEY': API_KEY,
+        'CST': tokens['client_session_token'],
+        'X-SECURITY-TOKEN': tokens['x_security_token'],
         }
-    r = requests.get(url, headers=headers)
-    return url
+    response = requests.get(url, headers=headers)
+    return response
 
-# Login.
-account = 'spreadbet'
-identifier = 'gpjohno1'
-password = 'Fly1ngF1sh!'
-api_key = 'c6625d5036d679e7ca85095e12ceadd55b7b04a8'
 
-login = {
-    'url': 'https://demo-api.ig.com/gateway/deal/session',
-    'headers': {
+def login():
+    '''Create trading session and return session tokens.'''
+    url = 'https://demo-api.ig.com/gateway/deal/session'
+    headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json; charset=UTF-8',
         'VERSION': '2',
-        'X-IG-API-KEY': api_key,
-        },
-    'credentials': {
-        'identifier': identifier,
-        'password': password,
+        'X-IG-API-KEY': API_KEY,
         }
-    }
+    credentials = {
+        'identifier': IDENTIFIER,
+        'password': PASSWORD,
+        }
+    response = requests.post(url, headers=headers, json=credentials)
+    tokens = {
+        'client_session_token': response.headers['CST'],
+        'x_security_token': response.headers['X-SECURITY-TOKEN'],
+        }
+    return tokens
 
-r = requests.post(
-    login['url'],
-    headers=login['headers'],
-    json=login['credentials']
-    )
+# Constants.
+API_KEY = 'c6625d5036d679e7ca85095e12ceadd55b7b04a8'
+IDENTIFIER = 'gpjohno1'
+PASSWORD = 'Fly1ngF1sh!'
 
-client_session_token = r.headers['CST']
-x_security_token = r.headers['X-SECURITY-TOKEN']
+# Login
+tokens = login()
 
 # Accounts.
-session = request(api_key, client_session_token, x_security_token)
-
-# =============================================================================
-# # Session.
-# session = {
-#     'url': 'https://demo-api.ig.com/gateway/deal/session',
-#     'headers': {
-#         'Content-Type': 'application/json; charset=UTF-8',
-#         'Accept': 'application/json; charset=UTF-8',
-#         'X-IG-API-KEY': api_key,
-#         'CST': client_session_token,
-#         'X-SECURITY-TOKEN': x_security_token,
-#         }
-#     }
-# 
-# r = requests.get(
-#     session['url'],
-#     headers=session['headers']
-#     )
-# =============================================================================
-
-# =============================================================================
-# # Watchlists.
-# watchlists = {
-#     'url': 'https://demo-api.ig.com/gateway/deal/watchlists/4193953',
-#     'headers': {
-#         'Content-Type': 'application/json; charset=UTF-8',
-#         'Accept': 'application/json; charset=UTF-8',
-#         'X-IG-API-KEY': api_key,
-#         'CST': client_session_token,
-#         'X-SECURITY-TOKEN': x_security_token,
-#         }
-#     }
-# 
-# r = requests.get(
-#     watchlists['url'],
-#     headers=watchlists['headers']
-#     )
-# =============================================================================
+accounts = request('accounts').json()

@@ -1,0 +1,10 @@
+# environment.yml
+name: ig-project
+channels:  
+    - conda
+dependencies:
+    - python
+    - numpy
+    - pandas
+    - jupyterlab 
+    - spyder
