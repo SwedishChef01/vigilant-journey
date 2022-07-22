@@ -1,3 +1,8 @@
+Confirmation number
+-------------------
+I4J8ME
+
+
 Original LHR to SYD
 -------------------
 UA 939
@@ -58,3 +63,10 @@ UA 901
 Thu 11 Aug 2022   --->   Fri 12 Aug 2022
 12:30 SFO                06:55 LHR
 Duration 10h 25m
+
+
+
+Parking
+-------
+Sat 23 Jul 2022  --->    Fri 12 Aug 2022
+10:00                    12:00

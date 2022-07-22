@@ -1,51 +1,51 @@
 '''IG Markets REST trading API.'''
 
 import numpy as np
+import os
 import pandas as pd
 import requests
 
 
-def request(endpoint):
+def get(endpoint):
     '''Response for GET HTTP request.'''
     url = f'https://demo-api.ig.com/gateway/deal/{endpoint}'
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json; charset=UTF-8',
         'X-IG-API-KEY': API_KEY,
-        'CST': tokens['client_session_token'],
-        'X-SECURITY-TOKEN': tokens['x_security_token'],
-        }
-    response = requests.get(url, headers=headers)
+        'CST': cst,
+        'X-SECURITY-TOKEN': xst,
+    }
+    response = requests.get(url, headers=headers).json()
     return response
 
 
 def login():
-    '''Create trading session and return session tokens.'''
+    '''Create a trading session and return session tokens.'''
     url = 'https://demo-api.ig.com/gateway/deal/session'
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json; charset=UTF-8',
         'VERSION': '2',
         'X-IG-API-KEY': API_KEY,
-        }
+    }
     credentials = {
         'identifier': IDENTIFIER,
         'password': PASSWORD,
-        }
+    }
     response = requests.post(url, headers=headers, json=credentials)
-    tokens = {
-        'client_session_token': response.headers['CST'],
-        'x_security_token': response.headers['X-SECURITY-TOKEN'],
-        }
-    return tokens
+    client_session_token = response.headers['CST']
+    x_security_token = response.headers['X-SECURITY-TOKEN']
+    return client_session_token, x_security_token
 
-# Constants.
-API_KEY = 'c6625d5036d679e7ca85095e12ceadd55b7b04a8'
-IDENTIFIER = 'gpjohno1'
-PASSWORD = 'Fly1ngF1sh!'
+
+# Credentials.
+API_KEY = os.environ.get('API_KEY_IG_DEMO')
+IDENTIFIER = os.environ.get('IDENTIFIER_IG')
+PASSWORD = os.environ.get('PASSWORD_IG')
 
 # Login
-tokens = login()
+cst, xst = login()
 
 # Accounts.
-accounts = request('accounts').json()
+accounts = get('accounts')
